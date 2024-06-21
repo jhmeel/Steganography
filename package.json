@@ -1,0 +1,45 @@
+{
+  "name": "Steganographic",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.6.5",
+    "file-saver": "^2.0.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet-async": "^2.0.4",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.1.0",
+    "react-modal": "^3.16.1",
+    "react-paystack": "^5.0.0",
+    "react-rough-notation": "^1.0.5",
+    "react-router-dom": "^6.21.3",
+    "recharts": "^2.10.4",
+    "scrollreveal": "^4.0.9",
+    "socket.io-client": "^4.7.5",
+    "styled-components": "^6.1.8",
+    "vite-plugin-svgr": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/file-saver": "^2.0.7",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@types/react-modal": "^3.16.3",
+    "@types/socket.io-client": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  }
+}

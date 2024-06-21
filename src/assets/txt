@@ -1,0 +1,34 @@
+{selectedCategory && (
+          <Modal>
+            <ModalContent>
+              <ModalHeader>
+                <ModalTitle>{selectedCategory.name}</ModalTitle>
+                <CloseButton onClick={handleCloseModal}>
+                  <FaTimes />
+                </CloseButton>
+              </ModalHeader>
+              <ContestantList>
+                {selectedCategory.contestants.map((contestant, i) => (
+                  <ContestantCard key={i}>
+                    <ContestantAvatar
+                      src={contestant.avatar}
+                      alt={contestant.name}
+                    />
+                    <ContestantName>{contestant.name}</ContestantName>
+                    <div className="contest-meta">
+                      <ContestantVotePrice>
+                        Min Vote Price: ₦{contestant.minVotePrice || 0}
+                      </ContestantVotePrice>
+                      <ContestantVotes>
+                        Total Votes: {contestant.votes || 0}
+                      </ContestantVotes>
+                      <ContestantVotes>
+                        Total Votes Amount: ₦{contestant.totalVoteAmount || 0}
+                      </ContestantVotes>
+                    </div>
+                  </ContestantCard>
+                ))}
+              </ContestantList>
+            </ModalContent>
+          </Modal>
+        )}

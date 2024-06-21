@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  color: rgb(32, 32, 32);
+}
+:root {
+  font-family: "Proxima Nova", sans-serif;
+  line-height: 1.5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+a {
+  text-decoration: none;
+}
+
+body {
+  background: rgba(251, 251, 251, 1);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.loader {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+button {
+  padding: 6px 12px;
+  background-color: rgb(33, 119, 157);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+button:hover {
+  transition: 200ms ease-in-out;
+  transform: scale(1.01);
+}
+
+h1,
+h2,
+h3 {
+  color: rgb(17, 60, 78);
+}
+
+svg{
+fill: rgb(17, 60, 78);
+}
