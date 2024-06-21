@@ -19,6 +19,12 @@ import {
 } from "../lib/steganography";
 import { createAndDownloadTxtFile } from "../utils";
 
+
+interface MessageBubbleProps {
+  sent: boolean;
+}
+
+
 // Socket.IO instance
 const socket = io("https://steg-server.onrender.com");
 
@@ -71,15 +77,16 @@ const MessageList = styled.div`
   background-color: #ffffff;
 `;
 
-const MessageBubble = styled.div`
+
+const MessageBubble = styled.div<MessageBubbleProps>`
   display: flex;
   flex-direction: column;
-  align-items: ${({ sent }) => (sent ? "flex-end" : "flex-start")};
+  align-items: ${({ sent }) => (sent ? 'flex-end' : 'flex-start')};
   margin-bottom: 8px;
   animation: ${fadeIn} 0.5s ease-in-out, ${slideUp} 0.5s ease-in-out;
 `;
 
-const MessageContent = styled.div`
+const MessageContent =  styled.div<MessageBubbleProps>`
   display: flex;
   align-items: center;
   justify-content: ${({ sent }) => (sent ? "flex-end" : "flex-start")};
@@ -350,7 +357,11 @@ const ChatApp: React.FC = () => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = (event) => {
-        resolve(event.target.result as Uint8Array);
+        if (event.target?.result instanceof ArrayBuffer) {
+          resolve(new Uint8Array(event.target.result));
+        } else {
+          reject(new Error('File reading failed'));
+        }
       };
       reader.onerror = (error) => {
         reject(error);
@@ -358,7 +369,7 @@ const ChatApp: React.FC = () => {
       reader.readAsArrayBuffer(file);
     });
   };
-
+  
   const shareFile = async () => {
     if (!fileToShare || !secretData.accessCode || !secretData.data) {
       toast.error("Please provide the file details");
@@ -419,12 +430,12 @@ const ChatApp: React.FC = () => {
 
   };
   const [secretFilePayloadToDownload, setSecretFilePayloadToDownload] =
-    useState<{
-      accessCode: string;
-      fileUrl: string;
-      secretPayload: string;
-      caption: string;
-    }>({});
+    useState({
+      accessCode: '',
+      fileUrl: '',
+      secretPayload: '',
+      caption: '',
+    })
 
   const [uAccessCode, setUAccessCode] = useState<string>("");
 
